@@ -1,16 +1,23 @@
-﻿using Console_App.Utilities;
-using MatrixFun.Utilities;
+﻿using MatrixFun.Extensions;
+using MatrixFun.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
-const int MAX_SIZE = 13;
-
-int size = ConsoleUtilities.IntRead();
-
-int[,] matrix = new int[size, size];
-
-for (int i = 0; i < size; i++)
+if (OperatingSystem.IsWindows())
 {
-	for (int j = 0; j < size; j++)
-	{
-		matrix[i, j] = NumberUtilities.GenerateRandomInt(MAX_SIZE);
-	}
+	Console.SetWindowSize(200, 30);
 }
+HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
+
+// Register services
+builder.Services.RegisterServices();
+
+
+using IHost host = builder.Build();
+
+// Get the service and run the application
+IMatrixGameService gameService = host.Services.GetRequiredService<IMatrixGameService>();
+gameService.Run();
+
+
+
