@@ -1,5 +1,4 @@
-﻿using Figgle;
-using Figgle.Fonts;
+﻿using Figgle.Fonts;
 using MatrixFun.Constants;
 using MatrixFun.Interfaces;
 
@@ -9,33 +8,29 @@ namespace MatrixFun.Services
 	{
 		public int IntRead()
 		{
-			int returnValue;
 			while (true)
 			{
-				bool success = int.TryParse(Console.ReadLine()?.Trim(), out returnValue);
+				bool success = int.TryParse(Console.ReadLine()?.Trim(), out int returnValue);
 				if (!success)
 				{
 					Console.WriteLine("Invalid Integer");
 					continue;
 				}
-				break;
+				return returnValue;
 			}
-			return returnValue;
 		}
 		public double DoubleRead()
 		{
-			double returnValue;
 			while (true)
 			{
-				bool success = double.TryParse(Console.ReadLine()?.Trim(), out returnValue);
+				bool success = double.TryParse(Console.ReadLine()?.Trim(), out double returnValue);
 				if (!success)
 				{
 					Console.WriteLine("Invalid Double");
 					continue;
 				}
-				break;
+				return returnValue;
 			}
-			return returnValue;
 		}
 		public string StringRead(string? cancelationString = null, List<string>? stringList = null)
 		{
