@@ -8,7 +8,7 @@ namespace MatrixFun.Services
 		private Algorithm ChosenAlgorithm;
 		public Algorithm SetChosenAlgorithm(int algorithm)
 		{
-			return ChosenAlgorithm = (Algorithm)algorithm;
+			return ChosenAlgorithm = (Algorithm)algorithm + 1;
 		}
 	}
 }
